@@ -1,0 +1,34 @@
+﻿# Virtual Environment
+backend/.venv/
+.venv/
+venv/
+ENV/
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment Variables & Secrets (CRITICAL)
+backend/.env
+.env
+*.env.local
+
+# Frontend Node Dependencies & Builds
+frontend/node_modules/
+node_modules/
+frontend/dist/
+frontend/dist-ssr/
+*.local
+
+# System & Editor files
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.patch
+*.pdf

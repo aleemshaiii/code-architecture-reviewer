@@ -1,0 +1,72 @@
+﻿[
+  {
+    "id": "SEC-001",
+    "title": "Avoid Dynamic Code Execution",
+    "category": "Security",
+    "content": "Do not invoke eval(), exec(), or compile() on dynamic strings or untrusted parameters. These permit arbitrary remote code execution (RCE). Parse input with strict typing or AST literal evaluators.",
+    "tags": ["eval", "exec", "security", "rce", "injection", "unsafe_call"]
+  },
+  {
+    "id": "SEC-002",
+    "title": "Avoid Bare Exception Handling",
+    "category": "Reliability",
+    "content": "Do not use unadorned except blocks ('except:'). They trap critical process interrupts such as SystemExit and KeyboardInterrupt, concealing fatal defects and blocking graceful container restarts. Target specific exceptions.",
+    "tags": ["bare_except", "exception", "reliability", "error_handling"]
+  },
+  {
+    "id": "SEC-003",
+    "title": "Prevent Hardcoded Secrets and Tokens",
+    "category": "Security",
+    "content": "API keys, database credentials, and secret signing keys must never be hardcoded in application logic. Store them in secret managers or inject them via environment variables at deployment.",
+    "tags": ["secrets", "credentials", "api_key", "password", "security"]
+  },
+  {
+    "id": "SEC-004",
+    "title": "SQL Injection Safeguards",
+    "category": "Security",
+    "content": "Never concatenate raw user strings into SQL queries. Always utilize parameterized queries, bind variables, or an Object Relational Mapper (ORM) like SQLAlchemy or Tortoise.",
+    "tags": ["sql", "injection", "database", "orm", "security"]
+  },
+  {
+    "id": "ARCH-001",
+    "title": "Asynchronous Non-Blocking Handlers",
+    "category": "Architecture",
+    "content": "In high-concurrency event loops (like FastAPI), never execute synchronous blocking network calls (e.g. requests.get or time.sleep). Use httpx.AsyncClient and asyncio.sleep to prevent event-loop starvation.",
+    "tags": ["async", "fastapi", "performance", "event_loop", "blocking"]
+  },
+  {
+    "id": "ARCH-002",
+    "title": "Cache Invalidation & In-Memory Storage",
+    "category": "Scalability",
+    "content": "When caching database lookups in Redis or Memcached, define explicit Time-To-Live (TTL) horizons and adopt write-through or cache-aside strategies to prevent reading stale, corrupted state.",
+    "tags": ["redis", "cache", "database", "ttl", "staleness"]
+  },
+  {
+    "id": "ARCH-003",
+    "title": "Layered Separation of Responsibilities",
+    "category": "Architecture",
+    "content": "Decouple HTTP routing layers from business domain services and data persistence layers. API routers should validate request schemas and delegate business logic to decoupled services.",
+    "tags": ["architecture", "routing", "separation_of_concerns", "service_layer"]
+  },
+  {
+    "id": "ARCH-004",
+    "title": "Connection Pooling for Database Connections",
+    "category": "Scalability",
+    "content": "Creating a new database TCP handshake on every HTTP request produces excessive connection overhead. Maintain a persistent asynchronous connection pool with configured max_overflow limits.",
+    "tags": ["database", "postgres", "pool", "sqlalchemy", "connections"]
+  },
+  {
+    "id": "ARCH-005",
+    "title": "Idempotent Queue Consumer Design",
+    "category": "Architecture",
+    "content": "Distributed message queues (Kafka, RabbitMQ, SQS) provide at-least-once delivery guarantees. Consumers must maintain idempotency via unique deduplication keys or transactional checkpoints.",
+    "tags": ["kafka", "queue", "rabbitmq", "idempotency", "microservices"]
+  },
+  {
+    "id": "REL-001",
+    "title": "External Service Timeouts and Circuit Breakers",
+    "category": "Reliability",
+    "content": "Calls to third-party APIs or remote microservices must define aggressive timeouts and circuit breaker patterns to prevent cascaded failures and thread pool saturation during downstream outages.",
+    "tags": ["timeout", "circuit_breaker", "resilience", "microservices"]
+  }
+]
